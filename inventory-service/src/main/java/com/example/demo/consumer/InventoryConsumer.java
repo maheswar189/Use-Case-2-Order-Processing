@@ -1,5 +1,7 @@
 package com.example.demo.consumer;
 
+import java.time.LocalDateTime;
+
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +13,7 @@ public class InventoryConsumer {
 	@KafkaListener(topics = "order-created-topic")
 	public void consume(OrderCreatedEvent event) {
 
-	    System.out.println("Inventory reserved for " + event.orderId());
+	    System.out.println("Inventory reserved for " + event.orderId()+" Timestamp: " +LocalDateTime.now() );
 
 	}
 }

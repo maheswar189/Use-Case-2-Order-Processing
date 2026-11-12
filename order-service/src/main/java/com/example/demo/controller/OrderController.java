@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,6 @@ public class OrderController {
 
 		producer.publishOrderCreatedEvent(event);
 
-		return "Order published successfully";
+		return "Order published successfully" +"Timestamp: " +LocalDateTime.now() ;
 	}
 }
