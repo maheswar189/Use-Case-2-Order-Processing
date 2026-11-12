@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: payment-service
@@ -5,13 +6,18 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
 
+    # Consumer configuration
     consumer:
       group-id: payment-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-
       properties:
         spring.json.trusted.packages: "*"
 
+    # Producer configuration
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+     
 server:
   port: 8082
